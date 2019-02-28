@@ -3,6 +3,8 @@
 Take an input stream of English text and output formatted with colour assigned
 to each word according to the tags assigned by `nltk`
 
+![Screenshot.png](https://github.com/williamholland/colourise_nlp/blob/master/img/Screenshot.png)
+
 ## Usage
 
     python colourise_nlp.py < input.txt > output.rst
