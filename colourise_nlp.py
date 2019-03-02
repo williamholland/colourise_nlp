@@ -95,8 +95,14 @@ class TaggingEngine(object):
         result = ''
         for word in self.tag_python(text):
             c_index = self._get_colour_rtf(word.colour)
-            chars = word.chars.replace('\n', r'\line')
-            result = result + "{\\f0 \\cf%s %s}" % (c_index, chars)
+            text = word.chars.replace('\n', r'\line')
+            # rtf takes font size in half pts
+            font_size = self.config.getint(self.cfg_section, 'font_size') * 2
+            result = result + "{{\\f0\\fs{font_size}\\cf{colour} {text}}}".format(
+                font_size=font_size,
+                colour=c_index,
+                text=text
+            )
         return result
 
     def eof_rtf(self):
