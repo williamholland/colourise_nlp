@@ -58,7 +58,6 @@ class TaggingEngine(object):
         for rgb in self._rtf_colours:
             sys.stdout.write(r'\red{}\green{}\blue{};'.format(*rgb))
         print '}'
-        print '\widowctrl\hyphauto'
 
     def _get_colour_from_tag(self, tag):
         for i, (t, c) in enumerate(self.tags_colours_mapping):
@@ -74,7 +73,7 @@ class TaggingEngine(object):
 
     def tag_python(self, text):
         tokens = nltk.word_tokenize(text)
-        tags = nltk.pos_tag(tokens) # gives list like [('test', 'NN')]
+        tags = nltk.pos_tag(tokens, tagset='universal') # gives list like [('test', 'NN')]
 
         # leading whitespace
         match = re.match('^(\s*)', text)
