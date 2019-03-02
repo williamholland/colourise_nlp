@@ -1,5 +1,5 @@
 import fileinput
-import csv
+import ConfigParser
 import sys
 import re
 
@@ -7,7 +7,7 @@ import nltk
 
 
 RTF_HEADER = '''\
-{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0 \\fswiss LiberationSans;}}\
+{{\\rtf1\\ansi\\deff0{{\\fonttbl{{\\f0 \\fswiss {font};}}}}\
 '''
 
 
@@ -24,15 +24,30 @@ class ColourisedWord(object):
         return self.tagged_word + self.whitespace
 
 
+def hex_to_rgb( hexi ):
+    hex_pattern = '#'+'([a-fA-F0-9]{2})'*3
+    rgbs = list(re.match(hex_pattern, hexi).groups())
+    return tuple(map(lambda x: int(x, 16), rgbs))
+
+
 class TaggingEngine(object):
 
+    cfg = 'default.cfg'
+    cfg_section = 'Colourise NLP'
+
     def get_tags_colours_mapping(self):
-        with open('word_class.csv') as csvfile:
-            reader = csv.DictReader(csvfile, delimiter='\t')
-            self.tags_colours_mapping = [(row['TAG'], tuple(map(int, row['COLOUR'].split(',')))) for row in reader]
+        ''' () -> list of pairs (<tag str>, <colour tuple of int>)
+            read from cfg all the fields starts with tag. then parse as hex
+            colours
+        '''
+        all_items = self.config.items(self.cfg_section)
+        tag_items = [o for o in all_items if o[0].startswith('tag.')]
+        tag_colours = [hex_to_rgb(o[1]) for o in tag_items]
+        tags = [re.sub('^tag\.', '', o[0]).upper() for o in tag_items]
+        self.tags_colours_mapping = zip(tags, tag_colours)
 
     def init_rtf(self):
-        print RTF_HEADER
+        print RTF_HEADER.format(font=self.config.get(self.cfg_section, 'font'))
         self._rtf_colours = list(set(t[1] for t in self.tags_colours_mapping))
         sys.stdout.write(r'{\colortbl;')
         for rgb in self._rtf_colours:
@@ -98,6 +113,8 @@ class TaggingEngine(object):
         }
 
     def init(self):
+        self.config = ConfigParser.ConfigParser()
+        self.config.read(self.cfg)
         self.get_tags_colours_mapping()
         self.init_fns[self.output_format]()
 
