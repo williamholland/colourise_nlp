@@ -7,7 +7,7 @@ import nltk
 
 
 RTF_HEADER = '''\
-{{\\rtf1\\ansi\\deff0{{\\fonttbl{{\\f0 \\fswiss {font};}}}}\
+{\\rtf1\\ansi\\deff0
 '''
 
 
@@ -47,7 +47,8 @@ class TaggingEngine(object):
         self.tags_colours_mapping = zip(tags, tag_colours)
 
     def init_rtf(self):
-        print RTF_HEADER.format(font=self.config.get(self.cfg_section, 'font'))
+        print RTF_HEADER
+        print '{{\\fonttbl;{font};}}'.format(font=self.config.get(self.cfg_section, 'font'))
         self._rtf_colours = list(set(t[1] for t in self.tags_colours_mapping))
         sys.stdout.write(r'{\colortbl;')
         for rgb in self._rtf_colours:
