@@ -79,7 +79,7 @@ class TaggingEngine(object):
         for word in self.tag_python(text):
             c_index = self._get_colour_rtf(word.colour)
             chars = word.chars.replace('\n', r'\line')
-            result = result + "{\\cf%s %s}" % (c_index, chars)
+            result = result + "{\\f0 \\cf%s %s}" % (c_index, chars)
         return result
 
     def eof_rtf(self):
