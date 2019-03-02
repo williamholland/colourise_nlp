@@ -64,3 +64,4 @@ colours as shown in the table below.
 * pluggable tagger
 * output tags to stderr for debugging
 * styling: bold, italic, underlined
+* take rtf input
