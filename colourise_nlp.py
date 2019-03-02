@@ -1,6 +1,8 @@
+from importlib import import_module
 import ConfigParser
 import sys
 import re
+import os
 
 import nltk
 
@@ -9,6 +11,10 @@ DESCRIPTION = 'Colour text with NLP'
 RTF_HEADER = '''\
 {\\rtf1\\ansi\\deff0
 '''
+
+
+TAGGERS = {f[:-3]: import_module('taggers.%s' % f[:-3]) for f in os.listdir('./taggers') if f.endswith('.py')}
+
 
 def rtf_escape(string):
     return string.replace('\\', '\\\\').replace('{','\\{').replace('}','\\}')
@@ -72,8 +78,8 @@ class TaggingEngine(object):
         return 0
 
     def tag_python(self, text):
-        tokens = nltk.word_tokenize(text)
-        tags = nltk.pos_tag(tokens, tagset='universal') # gives list like [('test', 'NN')]
+        
+        tags = self.tagger.tag(text)
 
         # leading whitespace
         match = re.match('^(\s*)', text)
@@ -127,6 +133,11 @@ class TaggingEngine(object):
     def init(self):
         self.config = ConfigParser.ConfigParser()
         self.config.read(self.cfg)
+        tagger_cfg = self.config.get(self.cfg_section, 'tagger')
+        try:
+            self.tagger = TAGGERS[tagger_cfg]
+        except KeyError:
+            raise KeyError('unknown tagger: %s' % tagger_cfg)
         self.get_tags_colours_mapping()
         self.init_fns[self.format]()
 
