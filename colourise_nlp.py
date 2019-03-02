@@ -1,10 +1,10 @@
-import fileinput
 import ConfigParser
 import sys
 import re
 
 import nltk
 
+DESCRIPTION = 'Colour text with NLP'
 
 RTF_HEADER = '''\
 {\\rtf1\\ansi\\deff0
@@ -33,6 +33,7 @@ def hex_to_rgb( hexi ):
 class TaggingEngine(object):
 
     cfg = 'default.cfg'
+    format = 'rtf'
     cfg_section = 'Colourise NLP'
 
     def get_tags_colours_mapping(self):
@@ -101,8 +102,9 @@ class TaggingEngine(object):
     def eof_rtf(self):
         print '}'
 
-    def __init__(self, output_format='rtf'):
-        self.output_format = output_format
+    def __init__(self, config=cfg, format=None):
+        self.cfg = config
+        self.format = format
         self.init_fns = {
             'rtf': self.init_rtf,
         }
@@ -117,23 +119,31 @@ class TaggingEngine(object):
         self.config = ConfigParser.ConfigParser()
         self.config.read(self.cfg)
         self.get_tags_colours_mapping()
-        self.init_fns[self.output_format]()
+        self.init_fns[self.format]()
 
     def tag(self, text):
-        return self.tag_fns[self.output_format](text)
+        return self.tag_fns[self.format](text)
 
     def eof(self):
-        self.eof_fns[self.output_format]()
+        self.eof_fns[self.format]()
         print '}'
 
 
 def main():
-    tagging_engine = TaggingEngine('rtf')
+    import argparse
+
+    parser = argparse.ArgumentParser(description=DESCRIPTION)
+    parser.add_argument('-c', '--config', help='which .cfg file to use', default=TaggingEngine.cfg)
+    parser.add_argument('-f', '--format', help='file format of output e.g. "rtf"', default=TaggingEngine.format)
+    args = parser.parse_args()
+
+    tagging_engine = TaggingEngine(config=args.config, format=args.format)
     tagging_engine.init()
+
     try:
         # collect chars until get punctuation then send to tagging engine
         sentence = ''
-        for line in fileinput.input():
+        for line in sys.stdin:
             for c in line:
                 sentence = sentence + c
                 if c in '.?!':
