@@ -49,7 +49,7 @@ class TaggingEngine(object):
 
     def init_rtf(self):
         print RTF_HEADER
-        print '{{\\fonttbl;{font};}}'.format(font=self.config.get(self.cfg_section, 'font'))
+        print r'{{\fonttbl {{\f0 {font};}}}}'.format(font=self.config.get(self.cfg_section, 'font'))
         self._rtf_colours = list(set(t[1] for t in self.tags_colours_mapping))
         sys.stdout.write(r'{\colortbl;')
         for rgb in self._rtf_colours:
