@@ -7,7 +7,7 @@ to each word according to the tags assigned by `nltk`
 
 ## Usage
 
-    python colourise_nlp.py < input.txt > output.rst
+    python colourise_nlp.py < input.txt > output.rtf
 
 ## Requires
 
@@ -23,45 +23,44 @@ colours as shown in the table below.
 
 | TAG | DESCRIPTION | COLOUR |
 | --- | ----------- | ------ |
-| `DEFAULT` | default colour | ![#cdc8b1](https://placehold.it/15/cdc8b1/000000?text=+) `205,200,177` |
-| `CC` | coordinating conjunction | ![#cdc8b1](https://placehold.it/15/cdc8b1/000000?text=+) `205,200,177` |
-| `CD` | cardinal digit | ![#cdc8b1](https://placehold.it/15/cdc8b1/000000?text=+) `205,200,177` |
-| `DT` | determiner | ![#ff6a6a](https://placehold.it/15/ff6a6a/000000?text=+) `255,106,106` |
-| `EX` | existential there | ![#ff6a6a](https://placehold.it/15/ff6a6a/000000?text=+) `255,106,106` |
-| `FW` | foreign word | ![#cdc8b1](https://placehold.it/15/cdc8b1/000000?text=+) `205,200,177` |
-| `IN` | preposition/subordinating conjunction | ![#ffd74c](https://placehold.it/15/ffd74c/000000?text=+) `255,215,76` |
-| `JJ` | adjective (large) | ![#729fcf](https://placehold.it/15/729fcf/000000?text=+) `114,159,207` |
-| `JJR` | adjective, comparative (larger) | ![#204a87](https://placehold.it/15/204a87/000000?text=+) `32,74,135` |
-| `JJS` | adjective, superlative (largest) | ![#729fcf](https://placehold.it/15/729fcf/000000?text=+) `114,159,207` |
-| `LS` | list market | ![#cdc8b1](https://placehold.it/15/cdc8b1/000000?text=+) `205,200,177` |
-| `MD` | modal (could, will) | ![#9bcd9b](https://placehold.it/15/9bcd9b/000000?text=+) `155,205,155` |
-| `NN` | noun, singular (cat, tree) | ![#ff4040](https://placehold.it/15/ff4040/000000?text=+) `255,64,64` |
-| `NNS` | noun plural (desks) | ![#ff4040](https://placehold.it/15/ff4040/000000?text=+) `255,64,64` |
-| `NNP` | proper noun, singular (sarah) | ![#ff4040](https://placehold.it/15/ff4040/000000?text=+) `255,64,64` |
-| `NNPS` | proper noun, plural (indians or americans) | ![#ff4040](https://placehold.it/15/ff4040/000000?text=+) `255,64,64` |
-| `PDT` | predeterminer (all, both, half) | ![#cdc8b1](https://placehold.it/15/cdc8b1/000000?text=+) `205,200,177` |
-| `POS` | possessive ending (parent's) | ![#ff6a6a](https://placehold.it/15/ff6a6a/000000?text=+) `255,106,106` |
-| `PRP` | personal pronoun (hers, herself, him,himself) | ![#ff6a6a](https://placehold.it/15/ff6a6a/000000?text=+) `255,106,106` |
-| `PRP$` | possessive pronoun (her, his, mine, my, our ) | ![#ff6a6a](https://placehold.it/15/ff6a6a/000000?text=+) `255,106,106` |
-| `RB` | adverb (occasionally, swiftly) | ![#ad7fa8](https://placehold.it/15/ad7fa8/000000?text=+) `173,127,168` |
-| `RBR` | adverb, comparative (greater) | ![#5c3566](https://placehold.it/15/5c3566/000000?text=+) `92,53,102` |
-| `RBS` | adverb, superlative (biggest) | ![#ad7fa8](https://placehold.it/15/ad7fa8/000000?text=+) `173,127,168` |
-| `RP` | particle (about) | ![#cdc8b1](https://placehold.it/15/cdc8b1/000000?text=+) `205,200,177` |
-| `TO` | infinite marker (to) | ![#ff66cc](https://placehold.it/15/ff66cc/000000?text=+) `255,102,204` |
-| `UH` | interjection (goodbye) | ![#cdc8b1](https://placehold.it/15/cdc8b1/000000?text=+) `205,200,177` |
-| `VB` | verb (ask) | ![#76ee00](https://placehold.it/15/76ee00/000000?text=+) `118,238,0` |
-| `VBG` | verb gerund (judging) | ![#9bcd9b](https://placehold.it/15/9bcd9b/000000?text=+) `155,205,155` |
-| `VBD` | verb past tense (pleaded) | ![#9bcd9b](https://placehold.it/15/9bcd9b/000000?text=+) `155,205,155` |
-| `VBN` | verb past participle (reunified) | ![#9bcd9b](https://placehold.it/15/9bcd9b/000000?text=+) `155,205,155` |
-| `VBP` | verb, present tense not 3rd person singular(wrap) | ![#9bcd9b](https://placehold.it/15/9bcd9b/000000?text=+) `155,205,155` |
-| `VBZ` | verb, present tense with 3rd person singular (bases) | ![#9bcd9b](https://placehold.it/15/9bcd9b/000000?text=+) `155,205,155` |
-| `WDT` | wh-determiner (that, what) | ![#ff6a6a](https://placehold.it/15/ff6a6a/000000?text=+) `255,106,106` |
-| `WP` | wh- pronoun (who) | ![#ff6a6a](https://placehold.it/15/ff6a6a/000000?text=+) `255,106,106` |
-| `WRB` | wh- adverb (how)  | ![#9bcd9b](https://placehold.it/15/9bcd9b/000000?text=+) `155,205,155` |
+| `CC` | coordinating conjunction | ![##555753](https://placehold.it/15/555753/000000?text=+) `#555753` |
+| `CD` | cardinal digit | ![##555753](https://placehold.it/15/555753/000000?text=+) `#555753` |
+| `DT` | determiner | ![##33c3c1](https://placehold.it/15/33c3c1/000000?text=+) `#33c3c1` |
+| `EX` | existential there | ![##33c3c1](https://placehold.it/15/33c3c1/000000?text=+) `#33c3c1` |
+| `FW` | foreign word | ![##555753](https://placehold.it/15/555753/000000?text=+) `#555753` |
+| `IN` | preposition/subordinating conjunction | ![##fa701d](https://placehold.it/15/fa701d/000000?text=+) `#fa701d` |
+| `JJ` | adjective (large) | ![##9f00bd](https://placehold.it/15/9f00bd/000000?text=+) `#9f00bd` |
+| `JJR` | adjective, comparative (larger) | ![##9f00bd](https://placehold.it/15/9f00bd/000000?text=+) `#9f00bd` |
+| `JJS` | adjective, superlative (largest) | ![##9f00bd](https://placehold.it/15/9f00bd/000000?text=+) `#9f00bd` |
+| `LS` | list market | ![##555753](https://placehold.it/15/555753/000000?text=+) `#555753` |
+| `MD` | modal (could, will) | ![##328a5d](https://placehold.it/15/328a5d/000000?text=+) `#328a5d` |
+| `NN` | noun, singular (cat, tree) | ![##135cd0](https://placehold.it/15/135cd0/000000?text=+) `#135cd0` |
+| `NNS` | noun plural (desks) | ![##135cd0](https://placehold.it/15/135cd0/000000?text=+) `#135cd0` |
+| `NNP` | proper noun, singular (sarah) | ![##135cd0](https://placehold.it/15/135cd0/000000?text=+) `#135cd0` |
+| `NNPS` | proper noun, plural (indians or americans) | ![##135cd0](https://placehold.it/15/135cd0/000000?text=+) `#135cd0` |
+| `PDT` | predeterminer (all, both, half) | ![##f8282a](https://placehold.it/15/f8282a/000000?text=+) `#f8282a` |
+| `POS` | possessive ending (parent's) | ![##33c3c1](https://placehold.it/15/33c3c1/000000?text=+) `#33c3c1` |
+| `PRP` | personal pronoun (hers, herself, him,himself) | ![##33c3c1](https://placehold.it/15/33c3c1/000000?text=+) `#33c3c1` |
+| `PRP$` | possessive pronoun (her, his, mine, my, our ) | ![##33c3c1](https://placehold.it/15/33c3c1/000000?text=+) `#33c3c1` |
+| `RB` | adverb (occasionally, swiftly) | ![##328a5d](https://placehold.it/15/328a5d/000000?text=+) `#328a5d` |
+| `RBR` | adverb, comparative (greater) | ![##328a5d](https://placehold.it/15/328a5d/000000?text=+) `#328a5d` |
+| `RBS` | adverb, superlative (biggest) | ![##328a5d](https://placehold.it/15/328a5d/000000?text=+) `#328a5d` |
+| `RP` | particle (about) | ![##555753](https://placehold.it/15/555753/000000?text=+) `#555753` |
+| `TO` | infinite marker (to) | ![##2cc631](https://placehold.it/15/2cc631/000000?text=+) `#2cc631` |
+| `UH` | interjection (goodbye) | ![##555753](https://placehold.it/15/555753/000000?text=+) `#555753` |
+| `VB` | verb (ask) | ![##2cc631](https://placehold.it/15/2cc631/000000?text=+) `#2cc631` |
+| `VBG` | verb gerund (judging) | ![##2cc631](https://placehold.it/15/2cc631/000000?text=+) `#2cc631` |
+| `VBD` | verb past tense (pleaded) | ![##2cc631](https://placehold.it/15/2cc631/000000?text=+) `#2cc631` |
+| `VBN` | verb past participle (reunified) | ![##2cc631](https://placehold.it/15/2cc631/000000?text=+) `#2cc631` |
+| `VBP` | verb, present tense not 3rd person singular(wrap) | ![##2cc631](https://placehold.it/15/2cc631/000000?text=+) `#2cc631` |
+| `VBZ` | verb, present tense with 3rd person singular (bases) | ![##2cc631](https://placehold.it/15/2cc631/000000?text=+) `#2cc631` |
+| `WDT` | wh-determiner (that, what) | ![##33c3c1](https://placehold.it/15/33c3c1/000000?text=+) `#33c3c1` |
+| `WP` | wh- pronoun (who) | ![##33c3c1](https://placehold.it/15/33c3c1/000000?text=+) `#33c3c1` |
+| `WRB` | wh- adverb (how)  | ![##328a5d](https://placehold.it/15/328a5d/000000?text=+) `#328a5d` |
+
 
 ## TODO
 
-* python interface
 * pluggable tagger
 * output tags to stderr for debugging
 * styling: bold, italic, underlined
