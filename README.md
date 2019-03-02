@@ -16,9 +16,9 @@ to each word according to the tags assigned by `nltk`
 ## Colour Meanings
 
 The colours of each word comes from a tag assigned by `nltk`. The colour of
-each tag can be configured in `word_class.csv`. The colour comes from the comma
-separated list of red,green,blue values in the COLOUR column. The default
-colours as shown in the table below.
+each tag can be configured by changing the `.cfg` file used (see
+`default.cfg`). A description of each tag can be found in `word_class.csv`.
+The default colours are showin in the table below.
 
 
 | TAG | DESCRIPTION | COLOUR |
