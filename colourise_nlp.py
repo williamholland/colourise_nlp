@@ -4,7 +4,6 @@ import sys
 import re
 import os
 
-import nltk
 
 DESCRIPTION = 'Colour text with NLP'
 
